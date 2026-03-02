@@ -62,7 +62,13 @@ PWA 全名為 Progressive Web App。
 - `service-worker.js` 可直接加 JavaScript 註解
 - `manifest.json` 是 JSON，不能直接加入註解，否則會變成無效格式
 
-## 專案驗證內容
+## iOS 測試補充
+
+- 桌面瀏覽器可直接出現安裝提示，不代表 iOS 也會用相同方式安裝
+- iOS 正確測法：使用 Safari 開站，按分享，再選「加入主畫面」
+- 若不是使用 Safari，安裝行為可能不明顯，或不會出現預期按鈕
+
+## 本專案驗證內容
 
 目前包含：
 
@@ -78,6 +84,7 @@ PWA 全名為 Progressive Web App。
 - 前端可呼叫 Flask API
 - Service Worker 可處理靜態資源快取
 - 離線時可提供 fallback 頁面
+- iOS 可透過 Safari 的「加入主畫面」方式安裝
 
 ## 專案重點檔案
 
@@ -86,9 +93,3 @@ PWA 全名為 Progressive Web App。
 - `templates/offline.html`: 離線頁
 - `static/manifest.json`: PWA 安裝設定
 - `static/service-worker.js`: 快取與離線處理
-
-## 專案定位
-
-專案屬於概念驗證樣板。
-
-用途為確認 Flask 專案在維持既有 Web 架構的情況下，是否能先具備 PWA 的基本能力，作為後續產品化或部署評估的基礎。
