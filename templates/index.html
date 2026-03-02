@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f766e">
+  <title>Flask PWA Demo</title>
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/icon-192.svg') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <p class="eyebrow">Flask + PWA</p>
+      <h1>最小可互動的 Flask PWA 範例</h1>
+      <p class="lead">
+        這頁不只是在展示靜態畫面。你可以直接按按鈕呼叫 Flask API，
+        確認前端互動、後端回應、PWA 安裝與離線快取都已經串起來。
+      </p>
+      <div class="actions">
+        <button id="pingBtn" class="primary">測試 Flask API</button>
+        <button id="installBtn" class="secondary" hidden>安裝到手機/桌面</button>
+        <a class="secondary" href="/offline">查看離線頁</a>
+      </div>
+    </section>
+
+    <section class="result-panel">
+      <div class="result-header">
+        <h2>互動測試結果</h2>
+        <span class="badge">/api/ping</span>
+      </div>
+      <pre id="pingResult" class="result-box">尚未測試。按下「測試 Flask API」後，這裡會顯示回傳結果。</pre>
+    </section>
+
+    <section class="card-grid">
+      <article class="card">
+        <h2>這不是純靜態頁</h2>
+        <p>按鈕會真的呼叫 Flask API，證明這個 PWA 仍然是有後端能力的 Web App。</p>
+      </article>
+      <article class="card">
+        <h2>PWA 核心元件還在</h2>
+        <p>Manifest 提供安裝資訊，service worker 負責快取與離線 fallback。</p>
+      </article>
+      <article class="card">
+        <h2>適合先做概念驗證</h2>
+        <p>先確認可安裝、可快取、可互動，再決定要不要把既有專案完整 PWA 化。</p>
+      </article>
+    </section>
+
+    <section class="checklist">
+      <h2>現在可以測什麼</h2>
+      <ul>
+        <li>點「測試 Flask API」，確認前端能收到 Flask JSON 回應。</li>
+        <li>Chrome DevTools 的 Application 面板能看到 Manifest。</li>
+        <li>Service Worker 成功註冊並快取首頁與靜態資源。</li>
+        <li>手機瀏覽器可顯示安裝提示，或出現加入主畫面的選項。</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

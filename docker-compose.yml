@@ -1,0 +1,8 @@
+services:
+  web:
+    build:
+      context: .
+    container_name: flask-pwa-demo
+    ports:
+      - "9001:9001"
+    restart: always
