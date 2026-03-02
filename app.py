@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, send_from_directory
 
 
 app = Flask(__name__)
@@ -23,6 +23,11 @@ def ping():
             "source": "Flask API",
         }
     )
+
+
+@app.route("/service-worker.js")
+def service_worker():
+    return send_from_directory("static", "service-worker.js", mimetype="application/javascript")
 
 
 if __name__ == "__main__":
